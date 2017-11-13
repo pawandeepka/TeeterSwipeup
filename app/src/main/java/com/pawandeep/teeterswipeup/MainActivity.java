@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private CardStackViewRight rightSwipe_mCardStackView;
     private TouristSpotCardAdapter adapter;
     private SecondAdapter adapter2;
-    boolean mDoubleBool = false, mSingleBool = false;
+    boolean mDoubleBool = false;
 
 
     @Override
@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         setup();
         reloadLeft();
         reloadRight();
+    }
+
+    private TouristSpot createTouristSpot() {
+        return new TouristSpot("Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800");
     }
 
     private List<TouristSpot> createTouristSpots() {
@@ -71,42 +75,11 @@ public class MainActivity extends AppCompatActivity {
         rightSwipe_mCardStackView = (CardStackViewRight) findViewById(R.id.rightSwipe_mCardStackView);
         leftSwipe_mCardStackView = (CardStackViewLeft) findViewById(R.id.leftSwipe_mCardStackView);
 
-        rightSwipe_mCardStackView.setCardEventListener(new CardStackViewRight.CardEventListener() {
-            @Override
-            public void onCardDraggingRight(float percentX, float percentY) {
-                Log.e("~~~~~~~~~~~Right > " , "percentX:::   >> " + percentX + "  percentY:::   >> " + percentY);
-            }
-
-            @Override
-            public void onCardSwipedRight(SwipeDirection direction) {
-                Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Right");
-                Log.e("CardStackView", "topIndex: " + rightSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Right");
-                if (rightSwipe_mCardStackView.getTopIndex() == adapter2.getCount() - 5) {
-                    Log.e("CardStackView", "Paginate: " + rightSwipe_mCardStackView.getTopIndex());
-                    paginate2();
-                }
-            }
-
-            @Override
-            public void onCardReversedRight() {
-
-            }
-
-            @Override
-            public void onCardMovedToOriginRight() {
-
-            }
-
-            @Override
-            public void onCardClickedRight(int index) {
-                Log.e("~~~~~~~~~~~~~~~~~~> " , "INDEX Right:::   >> " + index);
-            }
-        });
 
         leftSwipe_mCardStackView.setCardEventListener(new CardStackViewLeft.CardEventListener() {
             @Override
             public void onCardDraggingLeft(float percentX, float percentY) {
-                Log.e("~~~~~~~~~~~~~Left > " , "percentX:::   >> " + percentX + "  percentY:::   >> " + percentY);
+                Log.e("CardStackView", "onCardDragging"+ "~~~~~~~~~~Left");
             }
 
             @Override
@@ -131,9 +104,42 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCardClickedLeft(int index) {
-                Log.e("~~~~~~~~~~~~~~~~~~> " , "INDEX Left:::   >> " + index);
+
             }
         });
+
+        rightSwipe_mCardStackView.setCardEventListener(new CardStackViewRight.CardEventListener() {
+            @Override
+            public void onCardDraggingRight(float percentX, float percentY) {
+                Log.e("CardStackView", "onCardDragging"+ "~~~~~~~~~~Right");
+            }
+
+            @Override
+            public void onCardSwipedRight(SwipeDirection direction) {
+                Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Right");
+                Log.e("CardStackView", "topIndex: " + rightSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Right");
+                if (rightSwipe_mCardStackView.getTopIndex() == adapter2.getCount() - 5) {
+                    Log.e("CardStackView", "Paginate: " + rightSwipe_mCardStackView.getTopIndex());
+                    paginate2();
+                }
+            }
+
+            @Override
+            public void onCardReversedRight() {
+
+            }
+
+            @Override
+            public void onCardMovedToOriginRight() {
+
+            }
+
+            @Override
+            public void onCardClickedRight(int index) {
+
+            }
+        });
+
     }
 
     private void reloadLeft() {
@@ -176,4 +182,5 @@ public class MainActivity extends AppCompatActivity {
         adapter2.addAll(createTouristSpots());
         adapter2.notifyDataSetChanged();
     }
+
 }
