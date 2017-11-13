@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.pawandeep.teeterswipeup.swipelike.internal.CardStackViewLeft
+            android:id="@+id/leftSwipe_mCardStackView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:clipToPadding="false"
+            app:visibleCount="3"
+            app:swipeThreshold="0.75"
+            app:translationDiff="12"
+            app:scaleDiff="0.02"
+            app:stackFrom="top"
+            app:elevationEnabled="true"
+            app:swipeEnabled="true"
+            app:swipeDirection="horizontal"
+            app:leftOverlay="@layout/overlay_right" />
+
+
+        <com.pawandeep.teeterswipeup.swipelike.internal.CardStackViewRight
+            android:id="@+id/rightSwipe_mCardStackView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:clipToPadding="false"
+            app:visibleCount="3"
+            app:swipeThreshold="0.75"
+            app:translationDiff="12"
+            app:scaleDiff="0.02"
+            app:stackFrom="top"
+            app:elevationEnabled="true"
+            app:swipeEnabled="true"
+            app:swipeDirection="horizontal"
+            app:rightOverlay="@layout/overlay_right" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/activity_main_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
