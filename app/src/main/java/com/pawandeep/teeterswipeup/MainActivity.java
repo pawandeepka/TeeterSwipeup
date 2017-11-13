@@ -1,8 +1,6 @@
 package com.pawandeep.teeterswipeup;
 
-import android.animation.AnimatorSet;
 import android.annotation.SuppressLint;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -77,19 +75,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCardDraggingRight(float percentX, float percentY) {
                 Log.e("~~~~~~~~~~~Right > " , "percentX:::   >> " + percentX + "  percentY:::   >> " + percentY);
-                if (mSingleBool && mDoubleBool){
-
-                }
             }
 
             @Override
             public void onCardSwipedRight(SwipeDirection direction) {
-            /* Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Left");
-                Log.e("CardStackView", "topIndex: " + leftSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Left");
-                if (leftSwipe_mCardStackView.getTopIndex() == adapter.getCount() - 5) {
-                    Log.e("CardStackView", "Paginate: " + leftSwipe_mCardStackView.getTopIndex());
-                    paginate();
-                }*/
+                if (rightSwipe_mCardStackView.getTopIndex() == adapter2.getCount() - 5) {
+                    Log.e("CardStackView", "Paginate: " + rightSwipe_mCardStackView.getTopIndex());
+                    paginate2();
+                }
             }
 
             @Override
@@ -105,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCardClickedRight(int index) {
                 Log.e("~~~~~~~~~~~~~~~~~~> " , "INDEX Right:::   >> " + index);
-                mSingleBool = true;
             }
         });
 
@@ -113,19 +105,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCardDraggingLeft(float percentX, float percentY) {
                 Log.e("~~~~~~~~~~~~~Left > " , "percentX:::   >> " + percentX + "  percentY:::   >> " + percentY);
-               if (percentX<0){
-                   leftSwipe_mCardStackView.swipe(null, (AnimatorSet) null);
-               }
             }
 
             @Override
             public void onCardSwipedLeft(SwipeDirection direction) {
-            /* Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Left");
-                Log.e("CardStackView", "topIndex: " + leftSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Left");
                 if (leftSwipe_mCardStackView.getTopIndex() == adapter.getCount() - 5) {
                     Log.e("CardStackView", "Paginate: " + leftSwipe_mCardStackView.getTopIndex());
                     paginate();
-                }*/
+                }
             }
 
             @Override
@@ -141,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCardClickedLeft(int index) {
                 Log.e("~~~~~~~~~~~~~~~~~~> " , "INDEX Left:::   >> " + index);
-                mDoubleBool = true;
             }
         });
     }
@@ -186,4 +172,5 @@ public class MainActivity extends AppCompatActivity {
         adapter2.addAll(createTouristSpots());
         adapter2.notifyDataSetChanged();
     }
+
 }
