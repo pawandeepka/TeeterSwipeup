@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCardSwipedRight(SwipeDirection direction) {
+                Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Right");
+                Log.e("CardStackView", "topIndex: " + rightSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Right");
                 if (rightSwipe_mCardStackView.getTopIndex() == adapter2.getCount() - 5) {
                     Log.e("CardStackView", "Paginate: " + rightSwipe_mCardStackView.getTopIndex());
                     paginate2();
@@ -109,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCardSwipedLeft(SwipeDirection direction) {
+                Log.e("CardStackView", "onCardSwiped: " + direction.toString()+ "~~~~~~~~~~Left");
+                Log.e("CardStackView", "topIndex: " + leftSwipe_mCardStackView.getTopIndex()+ "~~~~~~~~~~Left");
                 if (leftSwipe_mCardStackView.getTopIndex() == adapter.getCount() - 5) {
                     Log.e("CardStackView", "Paginate: " + leftSwipe_mCardStackView.getTopIndex());
                     paginate();
@@ -172,5 +176,4 @@ public class MainActivity extends AppCompatActivity {
         adapter2.addAll(createTouristSpots());
         adapter2.notifyDataSetChanged();
     }
-
 }
